@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        VendorAI - AI Procurement Assistant
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h1>VendorAI</h1>
+
+        <ul>
+
+            <li>📊 Dashboard</li>
+
+            <li>📄 RFQs</li>
+
+            <li>🏢 Vendors</li>
+
+            <li>💰 Quotes</li>
+
+            <li>📈 Analytics</li>
+
+            <li>🤖 AI Insights</li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <!-- Header -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h1>
+                    Procurement Dashboard
+                </h1>
+
+                <p>
+                    Manage vendors, RFQs and procurement decisions.
+                </p>
+
+            </div>
+
+            <button class="primary-btn">
+                + New RFQ
+            </button>
+
+        </div>
+
+        <!-- Dashboard Cards -->
+
+        <div class="dashboard">
+
+            <div class="card">
+                <h2>Total Vendors</h2>
+                <h3 id="vendorCount">0</h3>
+            </div>
+
+            <div class="card">
+                <h2>RFQs Sent</h2>
+                <h3 id="rfqCount">0</h3>
+            </div>
+
+            <div class="card">
+                <h2>Savings</h2>
+                <h3>₹1.2L</h3>
+            </div>
+
+            <div class="card">
+                <h2>AI Savings</h2>
+                <h3>18%</h3>
+            </div>
+
+            <div class="card">
+                <h2>Top Vendor Score</h2>
+                <h3 id="topScore">0</h3>
+            </div>
+
+        </div>
+
+        <!-- RFQ Section -->
+
+        <section class="section">
+
+            <h2>Create RFQ</h2>
+
+            <div class="form-row">
+
+                <input
+                    type="text"
+                    id="product"
+                    placeholder="Product Name">
+
+                <input
+                    type="number"
+                    id="quantity"
+                    placeholder="Quantity">
+
+                <button onclick="createRFQ()">
+                    Create RFQ
+                </button>
+
+            </div>
+
+            <div id="rfqList"></div>
+
+        </section>
+
+        <!-- Vendor Section -->
+
+        <section class="section">
+
+            <h2>Vendor Management</h2>
+
+            <div class="form-row">
+
+                <input
+                    type="text"
+                    id="vendorName"
+                    placeholder="Vendor Name">
+
+                <input
+                    type="email"
+                    id="vendorEmail"
+                    placeholder="Vendor Email">
+
+                <button onclick="addVendor()">
+                    Add Vendor
+                </button>
+
+            </div>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Vendor Name</th>
+
+                        <th>Email</th>
+
+                        <th>Score</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="vendorList"></tbody>
+
+            </table>
+
+        </section>
+
+        <!-- Quote Comparison -->
+
+        <section class="section">
+
+            <h2>Compare Vendor Quotes</h2>
+
+            <div class="form-row">
+
+                <input
+                    type="number"
+                    id="vendorA"
+                    placeholder="Vendor A Price">
+
+                <input
+                    type="number"
+                    id="vendorB"
+                    placeholder="Vendor B Price">
+
+                <button onclick="compareQuotes()">
+                    Compare
+                </button>
+
+            </div>
+
+            <div class="result-box">
+
+                <h3 id="result"></h3>
+
+            </div>
+
+        </section>
+
+        <!-- AI Recommendation -->
+
+        <section class="section">
+
+            <h2>🤖 AI Recommendation</h2>
+
+            <div class="card">
+
+                <h3>Recommended Vendor</h3>
+
+                <p id="recommendation">
+
+                    Compare quotes to get AI suggestions.
+
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- Price Trend Chart -->
+
+        <section class="section">
+
+            <h2>📈 Price Trend Analysis</h2>
+
+            <canvas id="priceChart"></canvas>
+
+        </section>
+
+        <!-- Activity Feed -->
+
+        <section class="section">
+
+            <h2>Recent Activity</h2>
+
+            <ul class="activity-list">
+
+                <li>
+                    ✅ Procurement dashboard initialized
+                </li>
+
+                <li>
+                    📦 Ready to create RFQs
+                </li>
+
+                <li>
+                    🏢 Ready to onboard vendors
+                </li>
+
+            </ul>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
